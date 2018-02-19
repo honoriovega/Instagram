@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class LoginViewController: UIViewController {
     
@@ -29,6 +30,20 @@ class LoginViewController: UIViewController {
     @IBAction func onSignIn(_ sender: Any) {
     }
     @IBAction func onSignUp(_ sender: Any) {
+        
+        let newUser = PFUser()
+        newUser.username = usernameField.text
+        newUser.password = passwordField.text
+    
+        newUser.signUpInBackground { (success :Bool,error :  Error?) in
+            
+            if success {
+                print("Yay created a new user")
+            } else {
+                print(error?.localizedDescription)
+            }
+        }
+
     }
     
     /*
