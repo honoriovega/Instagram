@@ -28,6 +28,12 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onSignIn(_ sender: Any) {
+        PFUser.logInWithUsername(inBackground: usernameField.text!, password: passwordField.text!) { (user : PFUser?, error: Error?) in
+            
+            if user != nil {
+                print("you're logged in ")
+            }
+        }
     }
     @IBAction func onSignUp(_ sender: Any) {
         
@@ -41,6 +47,9 @@ class LoginViewController: UIViewController {
                 print("Yay created a new user")
             } else {
                 print(error?.localizedDescription)
+                if(error?._code == 202) {
+                    print("username is taken")
+                }
             }
         }
 
