@@ -32,6 +32,7 @@ class LoginViewController: UIViewController {
             
             if user != nil {
                 print("you're logged in ")
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
             }
         }
     }
@@ -45,6 +46,8 @@ class LoginViewController: UIViewController {
             
             if success {
                 print("Yay created a new user")
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+
             } else {
                 print(error?.localizedDescription)
                 if(error?._code == 202) {
