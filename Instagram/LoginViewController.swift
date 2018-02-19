@@ -26,7 +26,11 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func onSignIn(_ sender: Any) {
+    }
+    @IBAction func onSignUp(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 
