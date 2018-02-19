@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        Parse.initialize(
+            with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
+                configuration.applicationId = "Instagram"
+                configuration.clientKey = "48384843ADSDFD3292032900@@#@#Dfbosyo"  // set to nil assuming you have not set clientKey
+                configuration.server = "https://hidden-harbor-59483.herokuapp.com/parse"
+            })
+        )
+        
         return true
     }
 
