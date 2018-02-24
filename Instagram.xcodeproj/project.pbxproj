@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B3C1BE3203E52FE00648F02 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C1BE2203E52FE00648F02 /* ComposeViewController.swift */; };
 		1B57FE01203B8E640035B257 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B57FE00203B8E640035B257 /* LoginViewController.swift */; };
+		1B93A9D22040C98B00C06533 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B93A9D12040C98B00C06533 /* Post.swift */; };
+		1B93A9D42040CE8E00C06533 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B93A9D32040CE8E00C06533 /* PostCell.swift */; };
 		1BB343AF203B8A8D0060F5EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB343AE203B8A8D0060F5EF /* AppDelegate.swift */; };
-		1BB343B1203B8A8D0060F5EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB343B0203B8A8D0060F5EF /* ViewController.swift */; };
 		1BB343B4203B8A8D0060F5EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BB343B2203B8A8D0060F5EF /* Main.storyboard */; };
 		1BB343B6203B8A8D0060F5EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BB343B5203B8A8D0060F5EF /* Assets.xcassets */; };
 		1BB343B9203B8A8D0060F5EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BB343B7203B8A8D0060F5EF /* LaunchScreen.storyboard */; };
@@ -39,10 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B3C1BE2203E52FE00648F02 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		1B57FE00203B8E640035B257 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1B93A9D12040C98B00C06533 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		1B93A9D32040CE8E00C06533 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		1BB343AB203B8A8D0060F5EF /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BB343AE203B8A8D0060F5EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1BB343B0203B8A8D0060F5EF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1BB343B3203B8A8D0060F5EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1BB343B5203B8A8D0060F5EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1BB343B8203B8A8D0060F5EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -106,6 +110,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		1B3C1BE4203E530B00648F02 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1B57FE00203B8E640035B257 /* LoginViewController.swift */,
+				1BCD3DCF203E25D300D2A1B0 /* AuthenticatedViewController.swift */,
+				1B3C1BE2203E52FE00648F02 /* ComposeViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		1BB343A2203B8A8D0060F5EF = {
 			isa = PBXGroup;
 			children = (
@@ -131,14 +145,14 @@
 		1BB343AD203B8A8D0060F5EF /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				1B3C1BE4203E530B00648F02 /* ViewControllers */,
 				1BB343AE203B8A8D0060F5EF /* AppDelegate.swift */,
-				1BB343B0203B8A8D0060F5EF /* ViewController.swift */,
 				1BB343B2203B8A8D0060F5EF /* Main.storyboard */,
 				1BB343B5203B8A8D0060F5EF /* Assets.xcassets */,
 				1BB343B7203B8A8D0060F5EF /* LaunchScreen.storyboard */,
 				1BB343BA203B8A8D0060F5EF /* Info.plist */,
-				1B57FE00203B8E640035B257 /* LoginViewController.swift */,
-				1BCD3DCF203E25D300D2A1B0 /* AuthenticatedViewController.swift */,
+				1B93A9D12040C98B00C06533 /* Post.swift */,
+				1B93A9D32040CE8E00C06533 /* PostCell.swift */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -362,13 +376,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Instagram/Pods-Instagram-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
+				"${BUILT_PRODUCTS_DIR}/ParseUI/ParseUI.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ParseUI.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -466,10 +486,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B3C1BE3203E52FE00648F02 /* ComposeViewController.swift in Sources */,
 				1B57FE01203B8E640035B257 /* LoginViewController.swift in Sources */,
-				1BB343B1203B8A8D0060F5EF /* ViewController.swift in Sources */,
 				1BCD3DD0203E25D300D2A1B0 /* AuthenticatedViewController.swift in Sources */,
+				1B93A9D42040CE8E00C06533 /* PostCell.swift in Sources */,
 				1BB343AF203B8A8D0060F5EF /* AppDelegate.swift in Sources */,
+				1B93A9D22040C98B00C06533 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
