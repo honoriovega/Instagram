@@ -41,6 +41,8 @@ class AuthenticatedViewController: UIViewController,UITableViewDataSource {
         let query = Post.query()
         query?.order(byDescending: "createdAt")
         query?.includeKey("author")
+        query?.includeKey("timestamp")
+
         query?.limit = 20
         
         // fetch data asynchronously
@@ -112,6 +114,29 @@ class AuthenticatedViewController: UIViewController,UITableViewDataSource {
             refreshControl.endRefreshing()
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // noice
+        
+        if(sender != nil) {
+        
+            let cell = sender as! UITableViewCell
+            if let indexPath = tableView.indexPath(for: cell) {
+                let post = posts[indexPath.row]
+                let detailViewController = segue.destination as! DetailViewController
+                detailViewController.post = post
+                
+                let postCell = sender as! PostCell
+                detailViewController.postImage = postCell.postImageView.image
+            }
+        }
+        
+    }
+    
+    
+  
+    
+    
     
 
 }

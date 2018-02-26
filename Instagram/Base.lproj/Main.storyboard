@@ -120,6 +120,7 @@
                                         <connections>
                                             <outlet property="postImageView" destination="JIa-lr-nq0" id="67J-HG-LAi"/>
                                             <outlet property="postText" destination="C3I-fg-oNT" id="Dcw-pX-Cwi"/>
+                                            <segue destination="79q-JT-nRc" kind="show" id="4ze-HN-dqy"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -154,6 +155,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ehf-sa-psd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1944.8" y="94.902548725637189"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="6Tb-Tt-Pu7">
+            <objects>
+                <viewController id="79q-JT-nRc" customClass="DetailViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tkM-P5-SYb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Ci-Gj-mWh">
+                                <rect key="frame" x="0.0" y="64" width="375" height="265"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miz-V4-0rO">
+                                <rect key="frame" x="16" y="337" width="343" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3MC-Jr-7p5">
+                                <rect key="frame" x="16" y="365" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="zb1-3u-Atc"/>
+                    </view>
+                    <connections>
+                        <outlet property="captionLabel" destination="miz-V4-0rO" id="DCa-y4-F5w"/>
+                        <outlet property="postImageView" destination="1Ci-Gj-mWh" id="7X6-g1-C39"/>
+                        <outlet property="timeStampLabel" destination="3MC-Jr-7p5" id="Mby-dA-lBg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kia-ml-fqY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1944.8" y="812.74362818590714"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XMG-Es-YZf">
