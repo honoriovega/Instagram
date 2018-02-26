@@ -12,10 +12,12 @@ class PostCell: UITableViewCell {
 
     @IBOutlet weak var postImageView: PFImageView!
     
+    @IBOutlet weak var postText: UILabel!
     var instagramPost: PFObject! {
         didSet {
             self.postImageView.file = instagramPost["media"] as? PFFile
             self.postImageView.loadInBackground()
+            self.postText.text = instagramPost["caption"] as? String
         }
     }
     

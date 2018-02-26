@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class ComposeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    @IBOutlet weak var postImageView: UIImageView!
     
-
+    @IBOutlet weak var postCaption: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+     
 
     }
 
@@ -34,16 +36,21 @@ class ComposeViewController: UIViewController, UIImagePickerControllerDelegate, 
         let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
         
+        let resizedImage = resize(image: originalImage,newSize: CGSize(width: 400, height: 400))
+        
+        postImageView.image = resizedImage
         // Do something with the images (based on your use case)
-        
-        
-        Post.postUserImage(image: originalImage, withCaption: "cool") { (succes : Bool, error : Error?) in
-            
-        }
         // Dismiss UIImagePickerController to go back to your original view controller
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func onShare(_ sender: UIBarButtonItem) {
+        Post.postUserImage(image: postImageView.image, withCaption: postCaption.text) { (succes : Bool, error : Error?) in
+            
+        }
+        dismiss(animated: true, completion: nil)
+
+    }
     @IBAction func onAddPicture(_ sender: UITapGestureRecognizer) {
         
         let vc = UIImagePickerController()
@@ -57,5 +64,20 @@ class ComposeViewController: UIViewController, UIImagePickerControllerDelegate, 
             vc.sourceType = .photoLibrary
         }
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    func resize(image: UIImage, newSize: CGSize) -> UIImage {
+        let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: newSize.width, height: newSize.height))
+        
+        let resizeImageView = UIImageView(frame: rect)
+        
+        resizeImageView.contentMode = UIViewContentMode.scaleAspectFill
+        resizeImageView.image = image
+        
+        UIGraphicsBeginImageContext(resizeImageView.frame.size)
+        resizeImageView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
     }
 }

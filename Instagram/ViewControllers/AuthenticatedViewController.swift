@@ -20,14 +20,23 @@ class AuthenticatedViewController: UIViewController,UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
 
-        
+        tableView.insertSubview(refreshControl, at: 0)
+
         if PFUser.current() != nil {
             let username = PFUser.current()?.username as! String
             
         }
         
         
+        getPosts()
+
+        
+    }
+    
+    func getPosts() {
         // construct PFQuery
         let query = Post.query()
         query?.order(byDescending: "createdAt")
@@ -39,14 +48,12 @@ class AuthenticatedViewController: UIViewController,UITableViewDataSource {
             if let posts = posts {
                 self.posts = posts
                 self.tableView.reloadData()
-
+                
                 // do something with the data fetched
             } else {
                 // handle error
             }
         }
-
-        
     }
     
 
@@ -76,8 +83,10 @@ class AuthenticatedViewController: UIViewController,UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         
-        cell.instagramPost = posts[indexPath.row]
         print(posts[indexPath.row])
+        cell.instagramPost = posts[indexPath.row]
+        
+        print(cell)
         
         return cell
     }
@@ -86,7 +95,25 @@ class AuthenticatedViewController: UIViewController,UITableViewDataSource {
     {
         return 500;//Choose your custom row height
     }
+    // Makes a network request to get updated data
+    // Updates the tableView with the new data
+    // Hides the RefreshControl
+    @objc func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        
+        // ... Create the URLRequest `myRequest` ...
+        
+  
+            
+            // ... Use the new data to update the data source ...
+            getPosts()
+
+
+            // Tell the refreshControl to stop spinning
+            refreshControl.endRefreshing()
+        
+    }
     
 
-    
 }
+
+
